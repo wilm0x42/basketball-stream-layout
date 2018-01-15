@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
 </head>
 <body style="background-color: lightblue; text-align: center; font-family: sans;">
-<h1>WIP ;)</h1>
-<img src="heck.gif">
+	<h1 id="homeNameLabel"></h1>
+	<h1 id="awayNameLabel"></h1>
+	
+	<script>
+		nodecg.listenFor('changeHomeName', (value) =>
+		{
+        	document.getElementById('homeNameLabel').textContent = value;
+    	});
+    	
+    	nodecg.listenFor('changeAwayName', (value) =>
+		{
+        	document.getElementById('awayNameLabel').textContent = value;
+    	});
+	</script>
 </body>
 </html>
