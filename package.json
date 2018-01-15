@@ -2,11 +2,11 @@
   "name": "basketball-stream-layout",
   "version": "0.0.0",
   "description": "Stream graphics intended for livestreaming a basketball game",
-  "homepage": "http://github.com/wilm0x42/basketball-stream-layout",
+  "homepage": "https://github.com/wilm0x42/basketball-stream-layout",
   "author": {
     "name": "wilm0x42",
     "email": "wilm0x42@startmail.com",
-    "url": "http://github.com/wilm0x42"
+    "url": "https://github.com/wilm0x42"
   },
   "files": [
     "dashboard",
@@ -36,5 +36,5 @@
       }
     ]
   },
-  "repository": "https://github.com/nodecg/nodecg.git"
+  "repository": "https://github.com/wilm0x42/basketball-stream-layout.git"
 }
