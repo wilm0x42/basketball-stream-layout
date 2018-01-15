@@ -1,0 +1,40 @@
+{
+  "name": "basketball-stream-layout",
+  "version": "0.0.0",
+  "description": "Stream graphics intended for livestreaming a basketball game",
+  "homepage": "http://github.com/wilm0x42/basketball-stream-layout",
+  "author": {
+    "name": "wilm0x42",
+    "email": "wilm0x42@startmail.com",
+    "url": "http://github.com/wilm0x42"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~0.9.8",
+    "dashboardPanels": [
+      {
+        "name": "Main View",
+        "title": "Main Game View",
+        "width": 4,
+        "file": "main.html",
+        "headerColor": "#AAAAFF"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "main.html",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git"
+}
