@@ -2,21 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+    	body
+    	{
+    		text-align: center;
+    		font-family: sans;
+    	}
+    	h1
+    	{
+    		background-color: lightblue;
+    		color: white;
+    		text-shadow: 0px 0px 5px black;
+    		border-radius: 20px 0px 0px 20px;
+    		border: 2px solid black;
+    		border-right-width: 5px;
+    		float: left;
+    		margin: 3px;
+    		padding: 5px 10px;
+    		left: 0;
+    	}
+    	#teamNameContainer
+    	{
+    		top: 80%;
+    		left: 3%;
+    		position: absolute;
+    	}
+    </style>
 </head>
-<body style="background-color: lightblue; text-align: center; font-family: sans;">
-	<h1 id="homeNameLabel"></h1>
-	<h1 id="awayNameLabel"></h1>
-	
-	<script>
-		nodecg.listenFor('changeHomeName', (value) =>
-		{
-        	document.getElementById('homeNameLabel').textContent = value;
-    	});
-    	
-    	nodecg.listenFor('changeAwayName', (value) =>
-		{
-        	document.getElementById('awayNameLabel').textContent = value;
-    	});
-	</script>
+<body onload="getNames()" onclick="location.reload()">
+	<div id="teamNameContainer">
+		<h1 id="homeNameLabel"></h1><br>
+		<h1 id="awayNameLabel"></h1>
+	</div>
 </body>
+
+<script>
+	nodecg.listenFor('updateHomeName', (value) =>
+	{
+		console.log('Updating home name to: ' + value);
+    	document.getElementById('homeNameLabel').textContent = value;
+	});
+	
+	nodecg.listenFor('updateAwayName', (value) =>
+	{
+		console.log('Updating away name to: ' + value);
+    	document.getElementById('awayNameLabel').textContent = value;
+	});
+	
+	function getNames()
+	{
+		nodecg.sendMessage('getTeamNames', (error, home, away) =>
+		{
+			document.getElementById('homeNameLabel').textContent = home;
+			document.getElementById('awayNameLabel').textContent = away;
+		});
+	};
+</script>
+
 </html>

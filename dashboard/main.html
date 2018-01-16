@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
 </head>
-<body style="font-family: mono;">
-	<div style="border: 1px solid black; padding: 10px;">
+<body onload="getNames()" style="font-family: mono;">
+	<div style="border: 1px solid black; padding: 10px; margin: 10px;">
 		Home: <input type="text" id="homeName"><br>
 		Away: <input type="text" id="awayName"><br>
 	</div>
@@ -16,11 +16,30 @@
 		
 		document.getElementById('updateInfo').onclick = function()
 		{
-			//console.log(homeName.value + " - " + awayName.value);
+			console.log('Updating team names: ' + homeName.value + "/" + awayName.value);
 			
 			nodecg.sendMessage('updateHomeName', homeName.value);
 			nodecg.sendMessage('updateAwayName', awayName.value);
 		}
+		
+		//Keep it updated on all dashboard instances
+		nodecg.listenFor('updateHomeName', (value) =>
+		{
+        	homeName.value = value;
+    	});
+    	nodecg.listenFor('updateAwayName', (value) =>
+		{
+        	awayName.value = value;
+    	});
+    	
+    	function getNames()
+    	{
+    		nodecg.sendMessage('getTeamNames', (error, home, away) =>
+    		{
+    			homeName.value = home;
+    			awayName.value = away;
+    		});
+    	};
 	</script>
 </body>
 </html>
